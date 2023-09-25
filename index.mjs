@@ -20,8 +20,9 @@ const execute = async (dataPlayer) => {
 
         const bagPotions = new PotionBag(potions);
 
-        const bag = bagPotions.createPotions(dataPlayer.players[0].pouch_aged, cauldron);
-        // console.log(bag)
+        bagPotions.createPotions(dataPlayer.players[0].pouch_aged, cauldron);
+
+        showPotions(bagPotions);
 
 
         // let result = dataPlayer.players[0].pouch_red.filter((item,index)=>{
@@ -55,28 +56,6 @@ const execute = async (dataPlayer) => {
 const executePlayer = async () => {
     try{
         const dataPlayer = await getPlayer();
-
-        // const ingredients = Ingredients.load(data);
-        // console.log(ingredients)
-        // console.log(dataPlayer);
-
-        // showIngredients(data);
-
-        // //Creamos los ingredientes
-        // const ingredients = Ingredients.load(data);
-
-        // // //Creamos el caldero de pociones
-        // const cauldron = new Cauldron(ingredients);
-
-        // //creamos pociones
-        // const potion1 = cauldron.createPotion("Bear Claws", "Bee");
-        // showPotion(potion1);
-
-        // const potion2 = cauldron.createPotion("Chicken's Egg", "Chaurus Eggs");
-        // showPotion(potion2);
-
-        // const potion3 = cauldron.createPotion("Chaurus Eggs", "Bleeding Crown");
-        // showPotion(potion3);
         execute(dataPlayer);
 
     } catch (error) {
@@ -84,5 +63,16 @@ const executePlayer = async () => {
 
     }
 } 
+
+const showPotions = (bagPotions) => {
+    bagPotions.potions.forEach(element => {
+        console.log(`name: ${element.name}`);
+        console.log(`value: ${element.value}`);
+        console.log(`weight: ${element.weight}`);
+        console.log(`time: ${element.time}`);
+        console.log(`-----------------------------
+        `);
+    });
+}
 
 executePlayer();
