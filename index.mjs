@@ -1,10 +1,10 @@
 import {getData, getPlayer} from "./service.mjs";
 import { Ingredients } from "./ingredients.mjs";
 import { Cauldron } from "./cauldron.mjs";
+import { PotionBag } from "./PotionBag.mjs";
 
-const execute = async () => {
+const execute = async (dataPlayer) => {
     try{
-        executePlayer();
         const data = await getData();
         // console.log(data);
 
@@ -16,6 +16,22 @@ const execute = async () => {
         // //Creamos el caldero de pociones
         const cauldron = new Cauldron(ingredients);
 
+        let potions = [];
+
+        const bagPotions = new PotionBag(potions);
+
+        const bag = bagPotions.createPotions(dataPlayer.players[0].pouch_aged, cauldron);
+        // console.log(bag)
+
+
+        // let result = dataPlayer.players[0].pouch_red.filter((item,index)=>{
+        //     console.log(item)
+        // })
+        // console.log(result);
+
+        // const ingredientes = PotionBag.createPotions(ingredients, cauldron);
+        // console.log(ingredientes)
+
         // //creamos pociones
         // const potion1 = cauldron.createPotion("Bear Claws", "Bee");
         // showPotion(potion1);
@@ -26,8 +42,9 @@ const execute = async () => {
         // const potion3 = cauldron.createPotion("Chaurus Eggs", "Bleeding Crown");
         // showPotion(potion3);
         
-        const potion4 = cauldron.createPotion("Nightshade", "Ectoplasm");
-        console.log(potion4)
+        // const potion4 = cauldron.createPotion("Nightshade", "Ectoplasm");
+        // // console.log(potion4)
+        // 
 
     } catch (error) {
         console.log(error)
@@ -37,8 +54,11 @@ const execute = async () => {
 
 const executePlayer = async () => {
     try{
-        const data = await getPlayer();
-        console.log(data);
+        const dataPlayer = await getPlayer();
+
+        // const ingredients = Ingredients.load(data);
+        // console.log(ingredients)
+        // console.log(dataPlayer);
 
         // showIngredients(data);
 
@@ -57,7 +77,7 @@ const executePlayer = async () => {
 
         // const potion3 = cauldron.createPotion("Chaurus Eggs", "Bleeding Crown");
         // showPotion(potion3);
-        
+        execute(dataPlayer);
 
     } catch (error) {
         console.log(error)
@@ -65,4 +85,4 @@ const executePlayer = async () => {
     }
 } 
 
-execute();
+executePlayer();
