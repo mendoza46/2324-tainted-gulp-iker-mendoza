@@ -27,6 +27,7 @@ const execute = async (dataPlayer) => {
 
         const newCharacter = Character.from(dataPlayer, bagPotions.potions)
 
+        newCharacter.drinkEmAll();
 
         // showCharacter(newCharacter, dataPlayer);
 

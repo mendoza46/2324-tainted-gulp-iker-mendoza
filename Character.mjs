@@ -12,10 +12,14 @@ export class Character{
     static from(playerData, potions){
         return new Character(
             this.fullName = playerData.players[0].name,
-            this.health = Math.floor(Math.random() * 100),
-            this.magick = Math.floor(Math.random() * 100),
-            this.stamina = Math.floor(Math.random() * 100),
+            this.health = 50,
+            this.magick = 130,
+            this.stamina = 200,
             this.potions = potions
         )
+    }
+
+    drinkEmAll(){
+        console.log(this.potions)
     }
 }
