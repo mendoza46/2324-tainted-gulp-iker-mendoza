@@ -23,13 +23,13 @@ const execute = async (dataPlayer) => {
 
         bagPotions.createPotions(dataPlayer.players[0].pouch_aged, cauldron);
 
-        // showPotions(bagPotions);dataPlayer.players[0].name, 50, 100, 50, bagPotions.potions
+        // showPotions(bagPotions);
 
         const newCharacter = Character.from(dataPlayer, bagPotions.potions)
 
-        newCharacter.drinkEmAll();
+        // newCharacter.drinkEmAll();
 
-        // showCharacter(newCharacter, dataPlayer);
+        showCharacter(newCharacter);
 
 
     } catch (error) {
@@ -60,8 +60,8 @@ const showPotions = (bagPotions) => {
     });
 }
 
-const showCharacter = (newCharacter, dataPlayer) => {
-    console.log(`${newCharacter.fullName} the ${dataPlayer.players[0].class}`);
+const showCharacter = (newCharacter) => {
+    console.log(`${newCharacter.fullName}`);
     console.log(`---------------------------------`);
     console.log(`Health: ${newCharacter.health}`);
     console.log(`Magick: ${newCharacter.magick}`);

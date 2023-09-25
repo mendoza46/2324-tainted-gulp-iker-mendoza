@@ -11,7 +11,7 @@ export class Character{
 
     static from(playerData, potions){
         return new Character(
-            this.fullName = playerData.players[0].name,
+            this.fullName = playerData.players[0].name + " the " + playerData.players[0].class,
             this.health = 50,
             this.magick = 130,
             this.stamina = 200,
