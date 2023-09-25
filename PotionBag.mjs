@@ -5,16 +5,11 @@ export class PotionBag {
     }
 
     createPotions = (ingredients, cauldron) => {
-        for(let i = 0; i < ingredients.length; i++){
-            // console.log("ingrediente " + i +ingredients[i])
-            // console.log("ingrediente " + i +ingredients[i + 1])
-            if(i < 3){
-                const potion = cauldron.createPotion(ingredients[i], ingredients[i + 1])
-                this.potions.push(potion);
-            }
-            else{
-                const potion = cauldron.createPotion(ingredients[i], ingredients[0])
-                this.potions.push(potion);
+
+        for(let i = 0; i < ingredients.length;i++){
+            for(let j = i + 1; j < ingredients.length; j++){
+                const potion = cauldron.createPotion(ingredients[i], ingredients[j])
+                this.potions.push(potion)
             }
         }
         return new PotionBag;
